@@ -48,15 +48,6 @@ export function Navbar() {
         </ul>
         <div className="hidden lg:flex items-center gap-3">
           <a
-            href="/Vasco_Bartolomeu_CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-md glass px-4 py-2 text-sm font-medium text-foreground hover:bg-white/[0.07] transition-colors duration-200"
-          >
-            <FileDown className="h-4 w-4" />
-            Resume
-          </a>
-          <a
             href="#contact"
             className="inline-flex items-center rounded-md bg-primary/10 border border-primary/30 px-4 py-2 text-sm font-medium text-sky-300 hover:bg-primary/20 transition-colors duration-200"
           >
@@ -117,18 +108,6 @@ export function Navbar() {
                   </a>
                 </li>
               ))}
-              <li>
-                <a
-                  href="/Vasco_Bartolomeu_CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="flex items-center gap-2 py-3 text-base text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <FileDown className="h-4 w-4" />
-                  Resume
-                </a>
-              </li>
             </ul>
           </motion.div>
         )}
