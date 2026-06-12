@@ -1,0 +1,42 @@
+# Vasco Bartolomeu — Data Scientist & Software Engineer
+
+> Portfolio of Vasco Bartolomeu, a Data Scientist and Software Engineer from Angra do Heroísmo, Azores, Portugal. Background in Physics Engineering (B.Eng., University of Porto) and Data Science and Engineering (M.Eng., FEUP). Currently AI Engineer at Enari GmbH, building machine learning systems, cloud infrastructure and full-stack applications for enterprise clients across Europe. Open to freelance projects and collaborations.
+
+Languages spoken: Portuguese (native), English (fluent), Spanish (fluent).
+Contact: vbartolo00@gmail.com
+
+## Flagship Product
+
+- [DEEP Schedule](https://deep-orpin.vercel.app/): AI-powered scheduling optimization platform Vasco architected and built. Automatically assigns qualified employees to sessions, producing conflict-free, capacity-balanced schedules in minutes. Measured results: 80% planning time saved, 99% conflict-free schedules, under 10 minute solve time, 25% cost savings. Enterprise SaaS, multi-tenant, cloud native.
+
+## Selected Projects
+
+- SurfAI Coach (Red Bull): AI coaching application analyzing surf training videos and generating personalized feedback (PyTorch, Hugging Face, OpenCV, Azure).
+- Hand Pose Estimation from Muscle Signals (Enari GmbH): convolutional neural networks inferring hand pose from electrical impedance measurements — no camera required (CNNs, PyTorch, Azure ML).
+- LLM-Powered SEO Intelligence (Digital Loop): Large Language Model integrations turning analytics into actionable SEO insights (OpenAI, Gemini, Terraform, FastAPI).
+- Material Classification Platform (HybridDigital): Kubernetes-hosted computer vision service for anomaly detection in industrial QA (AKS, OpenCV, Azure DevOps).
+- Bicycle KPI Prediction (Porsche eBike): end-to-end ML pipeline predicting e-bike performance KPIs (Scikit-learn, Azure ML, AKS).
+- Smart Home Automation System (Raceland Automação): complete home automation platform for motorhomes — firmware, PLC control, Whisper voice commands, YOLOv5 object detection, mobile apps.
+
+## Live Websites Built
+
+- [Inês — Nutricionista SPA](https://ineswebsite.vercel.app/): landing page + booking service
+- [DEEP](https://deep-orpin.vercel.app/): product landing page
+- [Enari — SPA](https://enariwebsite.vercel.app/): landing page
+- [Haja Saúde — Fisioterapia](https://www.hajasaudefisio.com/): landing page
+- [Raceland Automação](https://raceland.pt/automacao/): landing page
+- [Barbershop](https://barbershopwebsite-rho.vercel.app/): landing page + booking service
+
+## Experience
+
+- AI Engineer & Data Scientist, Enari GmbH (07/2023 — present): ML pipelines on Azure for Red Bull, Porsche eBike, Digital Loop and HybridDigital; LLM integrations with OpenAI and Claude; Kubernetes, Terraform, CI/CD; full-stack development with React, FastAPI and Flask.
+- Full-Stack Software Developer, Raceland Automação (04/2022 — 07/2023): home automation platform, backend APIs, computer vision for security, serverless company website.
+
+## Education
+
+- M.Eng. Data Science and Engineering — Faculdade de Engenharia, Universidade do Porto (2022–2024)
+- B.Eng. Physics Engineering — Faculdade de Ciências, Universidade do Porto (2018–2022)
+
+## Tech Stack
+
+Python, TypeScript, JavaScript, R, SQL, PyTorch, TensorFlow, Scikit-learn, OpenCV, Hugging Face, OpenAI API, Claude API, Azure ML, Azure Databricks, Kubernetes (AKS), Docker, Terraform, Azure DevOps, AWS, Pandas, NumPy, pySpark, PostgreSQL, MongoDB, CosmosDB, Power BI, React, Next.js, FastAPI, Flask, Tailwind CSS.
