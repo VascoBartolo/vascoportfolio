@@ -1,4 +1,4 @@
-import { MapPin, ArrowRight, ChevronDown } from "lucide-react";
+import { MapPin, ArrowRight, ChevronDown, FileDown } from "lucide-react";
 import { SplineScene } from "@/components/ui/splite";
 import { Spotlight } from "@/components/ui/spotlight";
 import { cn } from "@/lib/utils";
@@ -21,6 +21,15 @@ function HeroActions({ className }: { className?: string }) {
           className="inline-flex items-center gap-2 rounded-md glass px-6 py-3 text-sm font-semibold text-foreground hover:bg-white/[0.07] transition-colors duration-200"
         >
           Get in touch
+        </a>
+        <a
+          href="/Vasco_Bartolomeu_CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-md glass px-6 py-3 text-sm font-semibold text-foreground hover:bg-white/[0.07] transition-colors duration-200"
+        >
+          <FileDown className="h-4 w-4" />
+          Download CV
         </a>
       </div>
 

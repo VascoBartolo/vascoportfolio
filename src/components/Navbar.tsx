@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X, FileDown } from "lucide-react";
 import { Logo } from "@/components/Logo";
 import { cn } from "@/lib/utils";
 
@@ -45,38 +46,93 @@ export function Navbar() {
             </li>
           ))}
         </ul>
-        <a
-          href="#contact"
-          className="hidden lg:inline-flex items-center rounded-md bg-primary/10 border border-primary/30 px-4 py-2 text-sm font-medium text-sky-300 hover:bg-primary/20 transition-colors duration-200"
-        >
-          Let's talk
-        </a>
+        <div className="hidden lg:flex items-center gap-3">
+          <a
+            href="/Vasco_Bartolomeu_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-md glass px-4 py-2 text-sm font-medium text-foreground hover:bg-white/[0.07] transition-colors duration-200"
+          >
+            <FileDown className="h-4 w-4" />
+            Resume
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center rounded-md bg-primary/10 border border-primary/30 px-4 py-2 text-sm font-medium text-sky-300 hover:bg-primary/20 transition-colors duration-200"
+          >
+            Let's talk
+          </a>
+        </div>
         <button
-          className="lg:hidden p-2 text-foreground"
+          className="lg:hidden relative h-10 w-10 grid place-items-center text-foreground"
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <AnimatePresence mode="wait" initial={false}>
+            {open ? (
+              <motion.span
+                key="close"
+                initial={{ opacity: 0, rotate: -90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 90 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="absolute inset-0 grid place-items-center"
+              >
+                <X className="h-6 w-6" />
+              </motion.span>
+            ) : (
+              <motion.span
+                key="menu"
+                initial={{ opacity: 0, rotate: 90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: -90 }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+                className="absolute inset-0 grid place-items-center"
+              >
+                <Menu className="h-6 w-6" />
+              </motion.span>
+            )}
+          </AnimatePresence>
         </button>
       </nav>
-      {open && (
-        <div className="lg:hidden glass border-t border-white/[0.06]">
-          <ul className="container py-4 flex flex-col gap-1">
-            {links.map((link) => (
-              <li key={link.href}>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="lg:hidden glass border-t border-white/[0.06] overflow-hidden"
+          >
+            <ul className="container py-4 flex flex-col gap-1">
+              {links.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="block py-3 text-base text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+              <li>
                 <a
-                  href={link.href}
+                  href="/Vasco_Bartolomeu_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setOpen(false)}
-                  className="block py-3 text-base text-muted-foreground hover:text-foreground transition-colors"
+                  className="flex items-center gap-2 py-3 text-base text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  {link.label}
+                  <FileDown className="h-4 w-4" />
+                  Resume
                 </a>
               </li>
-            ))}
-          </ul>
-        </div>
-      )}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
