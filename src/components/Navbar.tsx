@@ -135,12 +135,14 @@ export function Navbar() {
       {/* Mobile menu */}
       <div
         className={cn(
-          "fixed inset-0 z-40 lg:hidden transition-all duration-500",
+          "fixed inset-0 z-40 lg:hidden transition-opacity duration-[420ms] ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[opacity]",
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
         )}
         aria-hidden={!open}
       >
-        <div className="absolute inset-0 bg-background/70 backdrop-blur-2xl" />
+        {/* Solid paint instead of backdrop-filter: a blurred backdrop can't
+            cross-fade smoothly, which made the open/close feel stepped. */}
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(6,9,18,0.97),rgba(8,12,24,0.99))]" />
         <nav className="relative h-full container flex flex-col justify-center gap-2 pt-20">
           {[{ id: "hero", label: "Home" }, ...LINKS, { id: "contact", label: "Contact" }].map(
             (link, i) => (

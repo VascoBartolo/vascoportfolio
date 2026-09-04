@@ -17,11 +17,11 @@ export const SCENE_URL =
 /** Scene units that should span the box height. 280 reproduces the original
  *  hero framing (head to thighs); the mobile value shows the whole robot. */
 const VISIBLE_UNITS_DESKTOP = 350;
-const VISIBLE_UNITS_MOBILE = 560;
-/** Robot-local height (before scale) that should sit at the frame centre:
- *  mid-torso for the head-to-thigh crop, mid-body for the full robot. */
+const VISIBLE_UNITS_MOBILE = 350;
+/** Robot-local height (before scale) that should sit at the frame centre
+ *  (mid-torso for the head-to-thigh crop). */
 const FRAME_CENTRE_DESKTOP = 150;
-const FRAME_CENTRE_MOBILE = 20;
+const FRAME_CENTRE_MOBILE = 150;
 
 const damp = (a: number, b: number, lambda: number, dt: number) =>
   a + (b - a) * (1 - Math.exp(-lambda * dt));
@@ -131,7 +131,7 @@ export function SplineRobot() {
             const next = damp(pose[k], target[k], 3.4, dt);
             pose[k] = Number.isFinite(next) ? next : target[k];
           }
-          pose.scale = clamp(pose.scale, 0.2, 1.5);
+          pose.scale = clamp(pose.scale, 0, 1.5);
 
           // Move the framed box: pose.x/y are fractions of the free space.
           // Free space is measured against the *scaled* box so a smaller
@@ -140,7 +140,10 @@ export function SplineRobot() {
           const bh = box.offsetHeight * pose.scale;
           const tx = pose.x * Math.max(0, (vw - bw) / 2);
           const ty = -pose.y * Math.max(0, (vh - bh) / 2);
-          box.style.transform = `translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, 0) scale(${pose.scale.toFixed(3)})`;
+          const s = Math.max(0.01, pose.scale);
+          box.style.transform = `translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, 0) scale(${s.toFixed(3)})`;
+          // A pose scale near 0 means "hidden here" (used on phones).
+          box.style.opacity = clamp((pose.scale - 0.12) / 0.2, 0, 1).toFixed(3);
 
           const t = now / 1000;
 

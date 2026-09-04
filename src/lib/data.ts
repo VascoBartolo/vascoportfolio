@@ -88,6 +88,9 @@ export const FLAGSHIP = {
   tagline: "Schedule smarter. Operate better.",
   description:
     "A scheduling optimization platform I architected and built. It assigns the right people, with the right skills, to the right work, producing conflict-free, cost-efficient schedules for any business that manages teams, services or resources.",
+  /** Phone-length version of the description (fits without clamping). */
+  descriptionShort:
+    "A scheduling optimization platform I architected and built: the right people, with the right skills, on the right work. Conflict-free, cost-efficient schedules in minutes.",
   problem:
     "Manual scheduling silently drains businesses: planners lose 15–20 hours every week, around 20% of assignments collide in double bookings, and unbalanced workloads push turnover up. DEP Schedule removes all of that in minutes, not hours.",
   results: [
@@ -160,7 +163,7 @@ export const PROJECTS: Project[] = [
     logo: "/logos/digital-loop.png",
     title: "LLM-Powered SEO Intelligence",
     text: "Large Language Model integrations that turn raw analytics into actionable SEO insights, deployed on fully automated cloud pipelines.",
-    tags: ["OpenAI", "Gemini", "Terraform", "FastAPI"],
+    tags: ["OpenAI", "Gemini", "Terraform", "Hugging Face", "FastAPI"],
     domain: "LLM systems",
   },
   {
@@ -169,7 +172,7 @@ export const PROJECTS: Project[] = [
     logo: "/logos/hybrid-digital.png",
     title: "Material Classification Platform",
     text: "A Kubernetes-hosted computer vision service detecting anomalies in material images and quantifying affected areas for industrial QA.",
-    tags: ["Kubernetes", "OpenCV", "Azure DevOps", "Dynamics 365"],
+    tags: ["Kubernetes", "OpenCV", "Azure DevOps", "Scikit-learn"],
     domain: "Industrial AI",
   },
   {

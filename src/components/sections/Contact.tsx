@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUp, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { SplitText } from "@/components/ui/SplitText";
 import { Eyebrow } from "@/components/ui/SectionHeading";
@@ -37,24 +37,24 @@ export function Contact() {
                 </Reveal>
 
                 <Reveal delay={0.35}>
-                  <div className="mt-9 flex flex-wrap items-center gap-3">
-                    <Magnetic strength={0.25}>
+                  <div className="mt-9 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:items-center sm:gap-3">
+                    <Magnetic strength={0.25} className="w-full sm:w-auto">
                       <a
                         href={mailto}
-                        className="btn-primary group inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm font-semibold text-white"
+                        className="btn-primary group inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full px-3 py-3.5 sm:px-7 sm:py-4 text-[13px] sm:text-sm font-semibold text-white"
                       >
                         <Mail className="h-4 w-4" />
                         Book a call
-                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+                        <ArrowRight className="hidden sm:block h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                       </a>
                     </Magnetic>
-                    <Magnetic strength={0.2}>
+                    <Magnetic strength={0.2} className="w-full sm:w-auto">
                       <LiquidGlass
                         as="a"
                         href={CONTACT.phoneHref}
                         interactive
-                        className="px-6 py-4 text-sm font-semibold text-foreground"
-                        contentClassName="gap-2"
+                        className="w-full sm:w-auto px-3 py-3.5 sm:px-6 sm:py-4 text-[13px] sm:text-sm font-semibold text-foreground"
+                        contentClassName="w-full justify-center gap-2 whitespace-nowrap"
                       >
                         <Phone className="h-4 w-4 text-sky-300" />
                         {CONTACT.phone}
@@ -91,21 +91,7 @@ export function Contact() {
             <LogoMark className="h-7 w-7" />
             <span>© {new Date().getFullYear()} Vasco Bartolomeu. All rights reserved.</span>
           </div>
-          <div className="flex items-center gap-6">
-            <span className="hidden md:inline text-muted-foreground/60">
-              Designed &amp; built in the Azores
-            </span>
-            <LiquidGlass
-              as="a"
-              href="#hero"
-              interactive
-              className="px-4 py-2 text-xs text-foreground"
-              contentClassName="gap-2"
-            >
-              Back to top
-              <ArrowUp className="h-3.5 w-3.5" />
-            </LiquidGlass>
-          </div>
+          <span className="text-muted-foreground/60">Designed &amp; built in the Azores</span>
         </div>
       </footer>
     </section>

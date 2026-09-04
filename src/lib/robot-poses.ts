@@ -28,15 +28,18 @@ export const DESKTOP_POSES: Record<SectionId, RobotPose> = {
   contact: { x: -0.9, y: -0.05, z: 0, scale: 1, bodyYaw: 0.25, headYaw: 0.12, headPitch: -0.05, wave: 1 },
 };
 
+/** On phones the content is full-width, so the robot only appears where a
+ *  free band exists: the hero (above the title) and the Flagship story
+ *  (between the header and the step cards). A scale of 0 fades it out. */
 export const MOBILE_POSES: Record<SectionId, RobotPose> = {
-  hero: { x: 0, y: 0.72, z: 0, scale: 0.72, bodyYaw: 0, headYaw: 0, headPitch: 0.1, wave: 0 },
-  about: { x: 0.9, y: 0.85, z: 0, scale: 0.45, bodyYaw: -0.4, headYaw: -0.25, headPitch: 0.3, wave: 0 },
-  flagship: { x: 0.9, y: 0.72, z: 0, scale: 0.5, bodyYaw: -0.3, headYaw: 0, headPitch: 0.06, wave: 0 },
-  projects: { x: 0.9, y: 0.85, z: 0, scale: 0.45, bodyYaw: -0.25, headYaw: 0, headPitch: 0.06, wave: 0 },
-  websites: { x: 0, y: 0.9, z: 0, scale: 0.4, bodyYaw: 0, headYaw: 0, headPitch: 0.35, wave: 0 },
-  experience: { x: -0.9, y: 0.85, z: 0, scale: 0.45, bodyYaw: 0.4, headYaw: 0.25, headPitch: 0.3, wave: 0 },
-  stack: { x: 0.9, y: 0.85, z: 0, scale: 0.45, bodyYaw: -0.4, headYaw: -0.25, headPitch: 0.3, wave: 0 },
-  contact: { x: 0, y: 0.8, z: 0, scale: 0.55, bodyYaw: 0, headYaw: 0, headPitch: 0.05, wave: 1 },
+  hero: { x: 0, y: -0.02, z: 0, scale: 0.5, bodyYaw: 0, headYaw: 0, headPitch: 0.1, wave: 0 },
+  about: { x: 0, y: -0.02, z: 0, scale: 0, bodyYaw: 0.3, headYaw: 0, headPitch: 0.1, wave: 0 },
+  flagship: { x: 0, y: -0.14, z: 0, scale: 0.5, bodyYaw: -0.3, headYaw: 0, headPitch: 0.06, wave: 0 },
+  projects: { x: 0, y: -0.14, z: 0, scale: 0, bodyYaw: -0.25, headYaw: 0, headPitch: 0.06, wave: 0 },
+  websites: { x: 0, y: 0, z: 0, scale: 0, bodyYaw: 0, headYaw: 0, headPitch: 0.35, wave: 0 },
+  experience: { x: 0, y: 0, z: 0, scale: 0, bodyYaw: 0.4, headYaw: 0, headPitch: 0.3, wave: 0 },
+  stack: { x: 0, y: 0, z: 0, scale: 0, bodyYaw: -0.4, headYaw: 0, headPitch: 0.3, wave: 0 },
+  contact: { x: 0, y: 0, z: 0, scale: 0, bodyYaw: 0, headYaw: 0, headPitch: 0.05, wave: 1 },
 };
 
 const KEYS: (keyof RobotPose)[] = [

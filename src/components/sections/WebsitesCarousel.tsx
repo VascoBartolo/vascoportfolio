@@ -85,7 +85,14 @@ export function WebsitesCarousel() {
     const trackEl = track.current;
     const pinEl = pin.current;
     if (!trackEl || !pinEl) return;
-    const distance = () => Math.max(0, trackEl.scrollWidth - window.innerWidth);
+    const distance = () => {
+      const last = trackEl.lastElementChild as HTMLElement | null;
+      // Phones: end with the last (CTA) card centred on screen.
+      if (window.innerWidth < 768 && last) {
+        return Math.max(0, last.offsetLeft + last.offsetWidth / 2 - window.innerWidth / 2);
+      }
+      return Math.max(0, trackEl.scrollWidth - window.innerWidth);
+    };
 
     const ctx = gsap.context(() => {
       const tween = gsap.to(trackEl, {
@@ -177,8 +184,10 @@ export function WebsitesCarousel() {
 
         <div
           ref={track}
-          className="carousel-track flex items-stretch gap-5 md:gap-6"
-          style={{ paddingLeft: EDGE, paddingRight: EDGE }}
+          // On phones the right padding centres the last (CTA) card when the
+          // track reaches its end; from md up it matches the container edge.
+          className="carousel-track flex items-stretch gap-5 md:gap-6 pr-[calc((100vw-min(82vw,440px))/2)] md:pr-[max(1.25rem,calc((100vw-1360px)/2+3rem))]"
+          style={{ paddingLeft: EDGE }}
         >
           {SITES.map((site, i) => (
             <SiteCard key={site.url} site={site} index={i} />
@@ -186,7 +195,7 @@ export function WebsitesCarousel() {
           {/* Closing CTA card */}
           <a
             href="#contact"
-            className="group relative flex w-[min(82vw,440px)] shrink-0 flex-col justify-between rounded-2xl glass-strong p-8 transition-[transform,border-color] duration-500 hover:-translate-y-1.5 hover:border-sky-300/30"
+            className="group relative flex w-[min(82vw,440px)] shrink-0 flex-col justify-between overflow-hidden rounded-2xl glass-strong p-8 transition-[transform,border-color] duration-500 hover:-translate-y-1.5 hover:border-sky-300/30"
           >
             <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-sky-400/20 blur-[90px] pointer-events-none" />
             <p className="eyebrow">Next project</p>

@@ -72,7 +72,11 @@ export function Flagship() {
     <div id="flagship" data-section="flagship" ref={wrap} className="relative">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/30 to-transparent" />
       <div ref={pin} className="h-[100svh] overflow-hidden">
-        <div className="container relative h-full">
+        {/* Inner relative box so absolutely positioned blocks respect the
+            container's horizontal padding on phones. From md up the negative
+            margins cancel that padding, keeping the desktop layout as is. */}
+        <div className="container h-full">
+        <div className="relative h-full md:-mx-8 xl:-mx-12">
           {/* Header */}
           <div className="absolute left-0 top-[11svh] max-w-md lg:max-w-lg pr-4">
             <Reveal>
@@ -88,7 +92,10 @@ export function Flagship() {
               />
             </h2>
             <Reveal delay={0.25}>
-              <p className="mt-5 text-muted-foreground md:text-lg leading-relaxed line-clamp-4">
+              <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground lg:hidden">
+                {FLAGSHIP.descriptionShort}
+              </p>
+              <p className="mt-5 hidden lg:block text-muted-foreground md:text-lg leading-relaxed">
                 {FLAGSHIP.description}
               </p>
             </Reveal>
@@ -176,6 +183,7 @@ export function Flagship() {
               />
             </div>
           </div>
+        </div>
         </div>
       </div>
 
