@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { memo, useLayoutEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Globe } from "lucide-react";
 import { gsap, ScrollTrigger, scrollToTarget, scrollState } from "@/lib/scroll";
 import { LiquidGlass } from "@/components/ui/LiquidGlass";
@@ -9,14 +9,14 @@ import { SITES, screenshot, type Site } from "@/lib/data";
 
 const EDGE = "max(1.25rem, calc((100vw - 1360px) / 2 + 3rem))";
 
-function SiteCard({ site, index }: { site: Site; index: number }) {
+const SiteCard = memo(function SiteCard({ site, index }: { site: Site; index: number }) {
   const domain = new URL(site.url).hostname.replace("www.", "");
   return (
     <a
       href={site.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative block w-[min(82vw,560px)] shrink-0 rounded-2xl glass p-3 transition-[transform,border-color] duration-500 hover:-translate-y-1.5 hover:border-white/[0.16]"
+      className="group relative block w-[min(82vw,560px)] shrink-0 rounded-2xl glass p-3 transform-gpu transition-[transform,border-color] duration-500 hover:-translate-y-1.5 hover:border-white/[0.16]"
       style={{ ["--accent" as string]: site.accent }}
     >
       <div
@@ -43,8 +43,9 @@ function SiteCard({ site, index }: { site: Site; index: number }) {
           src={screenshot(site.url)}
           alt={`Preview of ${site.name}`}
           loading="lazy"
-          width={1280}
-          height={800}
+          decoding="async"
+          width={960}
+          height={600}
           className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -65,7 +66,7 @@ function SiteCard({ site, index }: { site: Site; index: number }) {
       </div>
     </a>
   );
-}
+});
 
 /**
  * Pinned section: vertical scrolling drives a horizontal track of live
@@ -77,8 +78,9 @@ export function WebsitesCarousel() {
   const pin = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const bar = useRef<HTMLDivElement>(null);
+  const counter = useRef<HTMLSpanElement>(null);
   const st = useRef<ScrollTrigger | null>(null);
-  const [index, setIndex] = useState(0);
+  const index = useRef(0);
   const total = SITES.length + 1;
 
   useLayoutEffect(() => {
@@ -107,9 +109,13 @@ export function WebsitesCarousel() {
           invalidateOnRefresh: true,
           anticipatePin: 1,
           onUpdate: (self) => {
+            // DOM-only updates: no React re-render while the track is moving.
             if (bar.current) bar.current.style.transform = `scaleX(${self.progress})`;
             const i = Math.round(self.progress * (total - 1));
-            setIndex((prev) => (prev === i ? prev : i));
+            if (i !== index.current) {
+              index.current = i;
+              if (counter.current) counter.current.textContent = String(i + 1).padStart(2, "0");
+            }
           },
         },
       });
@@ -153,7 +159,7 @@ export function WebsitesCarousel() {
 
             <Reveal delay={0.3} className="flex items-center gap-3 shrink-0">
               <span className="font-heading text-sm text-muted-foreground tabular-nums mr-2">
-                {String(index + 1).padStart(2, "0")}
+                <span ref={counter}>01</span>
                 <span className="text-muted-foreground/40"> / {String(total).padStart(2, "0")}</span>
               </span>
               <LiquidGlass
@@ -161,7 +167,7 @@ export function WebsitesCarousel() {
                 type="button"
                 interactive
                 aria-label="Previous website"
-                onClick={() => goTo(index - 1)}
+                onClick={() => goTo(index.current - 1)}
                 className="h-12 w-12 text-foreground"
                 contentClassName="h-full w-full justify-center"
               >
@@ -172,7 +178,7 @@ export function WebsitesCarousel() {
                 type="button"
                 interactive
                 aria-label="Next website"
-                onClick={() => goTo(index + 1)}
+                onClick={() => goTo(index.current + 1)}
                 className="h-12 w-12 text-foreground"
                 contentClassName="h-full w-full justify-center"
               >

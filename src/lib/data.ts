@@ -258,7 +258,7 @@ export const SITES: Site[] = [
 
 /* Live hero-section screenshots via the WordPress mShots service. */
 export const screenshot = (url: string) =>
-  `https://s0.wp.com/mshots/v1/${encodeURIComponent(url)}?w=1280&h=800`;
+  `https://s0.wp.com/mshots/v1/${encodeURIComponent(url)}?w=960&h=600`;
 
 export const WORK = [
   {

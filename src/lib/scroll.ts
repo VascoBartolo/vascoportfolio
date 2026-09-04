@@ -151,9 +151,13 @@ export function initSmoothScroll() {
     infinite: false,
     lerp: reduced ? 1 : 0.1,
     wheelMultiplier: 1.1,
-    touchMultiplier: 1.5,
+    touchMultiplier: 1.3,
     smoothWheel: !reduced,
-    syncTouch: false,
+    // Smooth touch scrolling too: pinned/scrubbed sections otherwise only
+    // receive the browser's coarse native scroll events on phones, which
+    // makes the horizontal carousel step instead of glide.
+    syncTouch: !reduced,
+    syncTouchLerp: 0.085,
     anchors: false,
   });
 

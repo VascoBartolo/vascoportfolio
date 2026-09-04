@@ -88,6 +88,7 @@ export function SplineRobot() {
 
         const pose: RobotPose = { ...DESKTOP_POSES.hero };
         let last = performance.now();
+        let renderPaused = false;
         setReady(true);
 
         const tick = (now: number) => {
@@ -143,7 +144,17 @@ export function SplineRobot() {
           const s = Math.max(0.01, pose.scale);
           box.style.transform = `translate3d(${tx.toFixed(1)}px, ${ty.toFixed(1)}px, 0) scale(${s.toFixed(3)})`;
           // A pose scale near 0 means "hidden here" (used on phones).
-          box.style.opacity = clamp((pose.scale - 0.12) / 0.2, 0, 1).toFixed(3);
+          const visibility = clamp((pose.scale - 0.12) / 0.2, 0, 1);
+          box.style.opacity = visibility.toFixed(3);
+          // Pause the WebGL loop while the robot is faded out so scrubbed
+          // sections (e.g. the carousel) keep the GPU to themselves.
+          if (visibility <= 0 && !renderPaused) {
+            renderPaused = true;
+            app.stop();
+          } else if (visibility > 0 && renderPaused) {
+            renderPaused = false;
+            app.play();
+          }
 
           const t = now / 1000;
 
