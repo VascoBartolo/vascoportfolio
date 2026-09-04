@@ -7,7 +7,7 @@ Contact: vbartolo00@gmail.com
 
 ## Flagship Product
 
-- [DEP Schedule](https://deep-orpin.vercel.app/): AI-powered scheduling optimization platform Vasco architected and built. Automatically assigns qualified employees to sessions, producing conflict-free, capacity-balanced schedules in minutes. Measured results: 80% planning time saved, 99% conflict-free schedules, under 10 minute solve time, 50+% cost savings. Enterprise SaaS, multi-tenant, cloud native.
+- [DEP Schedule](https://www.digitaleprovider.com/): AI-powered scheduling optimization platform Vasco architected and built. Automatically assigns qualified employees to sessions, producing conflict-free, capacity-balanced schedules in minutes. Measured results: 80% planning time saved, 99% conflict-free schedules, under 10 minute solve time, 50+% cost savings. Enterprise SaaS, multi-tenant, cloud native.
 
 ## Selected Projects
 
@@ -20,8 +20,8 @@ Contact: vbartolo00@gmail.com
 
 ## Live Websites Built
 
-- [Inês — Nutricionista SPA](https://ineswebsite.vercel.app/): landing page + booking service
-- [DEP Schedule](https://deep-orpin.vercel.app/): product landing page
+- [Inês — Nutricionista SPA](https://inesbandarranutricao.com/): landing page + booking service
+- [DEP Schedule](https://www.digitaleprovider.com/): product landing page
 - [Enari — SPA](https://enariwebsite.vercel.app/): landing page
 - [Haja Saúde — Fisioterapia](https://www.hajasaudefisio.com/): landing page
 - [Raceland Automação](https://raceland.pt/automacao/): landing page

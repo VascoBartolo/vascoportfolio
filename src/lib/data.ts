@@ -84,7 +84,7 @@ export const PILLARS: Pillar[] = [
 
 export const FLAGSHIP = {
   name: "DEP Schedule",
-  url: "https://deep-orpin.vercel.app/",
+  url: "https://www.digitaleprovider.com/",
   tagline: "Schedule smarter. Operate better.",
   description:
     "A scheduling optimization platform I architected and built. It assigns the right people, with the right skills, to the right work, producing conflict-free, cost-efficient schedules for any business that manages teams, services or resources.",
@@ -208,13 +208,13 @@ export interface Site {
 export const SITES: Site[] = [
   {
     name: "Inês — Nutricionista",
-    url: "https://ineswebsite.vercel.app/",
+    url: "https://inesbandarranutricao.com/",
     type: "Landing page + booking",
     accent: "#34d399",
   },
   {
     name: "DEP Schedule",
-    url: "https://deep-orpin.vercel.app/",
+    url: "https://www.digitaleprovider.com/",
     type: "Product landing page",
     accent: "#60a5fa",
   },
