@@ -1,13 +1,13 @@
 # Vasco Bartolomeu — Data Scientist & Software Engineer
 
-> Portfolio of Vasco Bartolomeu, a Data Scientist and Software Engineer from Angra do Heroísmo, Azores, Portugal. Background in Physics Engineering (B.Eng., University of Porto) and Data Science and Engineering (M.Eng., FEUP). Currently AI Engineer at Enari GmbH, building machine learning systems, cloud infrastructure and full-stack applications for enterprise clients across Europe. Open to freelance projects and collaborations.
+> Portfolio of Vasco Bartolomeu, a Data Scientist and Software Engineer from Angra do Heroísmo, Azores, Portugal. Background in Physics Engineering (B.Eng., University of Porto) and Data Science and Engineering (M.Eng., FEUP). Founder and Lead Software Developer at DEP - Digital Enterprise Provider, building AI products, cloud infrastructure and full-stack applications for clients across Europe. Previously AI Engineer at Enari GmbH. Open to freelance projects and collaborations.
 
 Languages spoken: Portuguese (native), English (fluent), Spanish (fluent).
 Contact: vbartolo00@gmail.com
 
 ## Flagship Product
 
-- [DEEP Schedule](https://deep-orpin.vercel.app/): AI-powered scheduling optimization platform Vasco architected and built. Automatically assigns qualified employees to sessions, producing conflict-free, capacity-balanced schedules in minutes. Measured results: 80% planning time saved, 99% conflict-free schedules, under 10 minute solve time, 25% cost savings. Enterprise SaaS, multi-tenant, cloud native.
+- [DEP Schedule](https://deep-orpin.vercel.app/): AI-powered scheduling optimization platform Vasco architected and built. Automatically assigns qualified employees to sessions, producing conflict-free, capacity-balanced schedules in minutes. Measured results: 80% planning time saved, 99% conflict-free schedules, under 10 minute solve time, 50+% cost savings. Enterprise SaaS, multi-tenant, cloud native.
 
 ## Selected Projects
 
@@ -21,14 +21,17 @@ Contact: vbartolo00@gmail.com
 ## Live Websites Built
 
 - [Inês — Nutricionista SPA](https://ineswebsite.vercel.app/): landing page + booking service
-- [DEEP](https://deep-orpin.vercel.app/): product landing page
+- [DEP Schedule](https://deep-orpin.vercel.app/): product landing page
 - [Enari — SPA](https://enariwebsite.vercel.app/): landing page
 - [Haja Saúde — Fisioterapia](https://www.hajasaudefisio.com/): landing page
 - [Raceland Automação](https://raceland.pt/automacao/): landing page
 - [Barbershop](https://barbershopwebsite-rho.vercel.app/): landing page + booking service
+- [Next Energy](https://nextenergy.pt/): company website
+- [Grupo Next Energy](https://www.gruponextenergy.com/): group website
 
 ## Experience
 
+- Founder and Lead Software Developer, DEP - Digital Enterprise Provider (present): AI products, DEP Schedule SaaS, landing pages and booking platforms for clients.
 - AI Engineer & Data Scientist, Enari GmbH (07/2023 — present): ML pipelines on Azure for Red Bull, Porsche eBike, Digital Loop and HybridDigital; LLM integrations with OpenAI and Claude; Kubernetes, Terraform, CI/CD; full-stack development with React, FastAPI and Flask.
 - Full-Stack Software Developer, Raceland Automação (04/2022 — 07/2023): home automation platform, backend APIs, computer vision for security, serverless company website.
 

@@ -6,13 +6,14 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
-      screens: { "2xl": "1280px" },
+      padding: { DEFAULT: "1.25rem", md: "2rem", xl: "3rem" },
+      screens: { "2xl": "1360px" },
     },
     extend: {
       fontFamily: {
         heading: ["Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif"],
         body: ["DM Sans", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["Instrument Serif", "Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -42,28 +43,48 @@ export default {
         },
       },
       borderRadius: {
-        lg: "0.75rem",
-        md: "0.5rem",
-        sm: "0.25rem",
+        "2xl": "1.5rem",
+        xl: "1.125rem",
+        lg: "0.875rem",
+        md: "0.625rem",
+        sm: "0.375rem",
+      },
+      letterSpacing: {
+        eyebrow: "0.28em",
       },
       animation: {
-        spotlight: "spotlight 2s ease 0.75s 1 forwards",
-        "fade-up": "fade-up 0.6s ease-out forwards",
+        marquee: "marquee var(--marquee-duration, 40s) linear infinite",
+        "marquee-reverse":
+          "marquee-reverse var(--marquee-duration, 40s) linear infinite",
+        shine: "shine 3.5s linear infinite",
+        aurora: "aurora 18s ease-in-out infinite alternate",
+        "pulse-soft": "pulse-soft 2.4s ease-in-out infinite",
       },
       keyframes: {
-        spotlight: {
-          "0%": {
-            opacity: "0",
-            transform: "translate(-72%, -62%) scale(0.5)",
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "marquee-reverse": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
+        },
+        shine: {
+          "0%": { backgroundPosition: "200% center" },
+          "100%": { backgroundPosition: "-200% center" },
+        },
+        aurora: {
+          "0%": { transform: "translate3d(-8%, -4%, 0) rotate(0deg) scale(1)" },
+          "50%": {
+            transform: "translate3d(6%, 8%, 0) rotate(12deg) scale(1.12)",
           },
           "100%": {
-            opacity: "1",
-            transform: "translate(-50%, -40%) scale(1)",
+            transform: "translate3d(-4%, 10%, 0) rotate(-8deg) scale(1.05)",
           },
         },
-        "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(24px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        "pulse-soft": {
+          "0%, 100%": { opacity: "0.55", transform: "scale(1)" },
+          "50%": { opacity: "1", transform: "scale(1.35)" },
         },
       },
     },
