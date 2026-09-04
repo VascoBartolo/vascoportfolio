@@ -1,6 +1,6 @@
 import { memo, useLayoutEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Globe } from "lucide-react";
-import { gsap, ScrollTrigger, scrollToTarget, scrollState } from "@/lib/scroll";
+import { gsap, ScrollTrigger, pinTuning, scrollToTarget } from "@/lib/scroll";
 import { LiquidGlass } from "@/components/ui/LiquidGlass";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/SectionHeading";
@@ -103,11 +103,10 @@ export function WebsitesCarousel() {
         scrollTrigger: {
           trigger: pinEl,
           pin: true,
-          scrub: scrollState.reducedMotion ? true : 0.8,
           start: "top top",
           end: () => `+=${distance()}`,
           invalidateOnRefresh: true,
-          anticipatePin: 1,
+          ...pinTuning(0.8),
           onUpdate: (self) => {
             // DOM-only updates: no React re-render while the track is moving.
             if (bar.current) bar.current.style.transform = `scaleX(${self.progress})`;

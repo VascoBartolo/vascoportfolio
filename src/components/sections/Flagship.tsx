@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { gsap, scrollState } from "@/lib/scroll";
+import { gsap, pinTuning } from "@/lib/scroll";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { SplitText } from "@/components/ui/SplitText";
 import { Reveal } from "@/components/ui/Reveal";
@@ -41,11 +41,10 @@ export function Flagship() {
         scrollTrigger: {
           trigger: pinEl,
           pin: true,
-          scrub: scrollState.reducedMotion ? true : 0.7,
           start: "top top",
           end: () => `+=${Math.round(window.innerHeight * 3.2)}`,
-          anticipatePin: 1,
           invalidateOnRefresh: true,
+          ...pinTuning(0.7),
           onUpdate: (self) => {
             const p = self.progress;
             const ph = p < 0.33 ? 0 : p < 0.66 ? 1 : 2;

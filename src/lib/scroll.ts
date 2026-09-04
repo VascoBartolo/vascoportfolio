@@ -241,4 +241,24 @@ export function scrollToSection(id: SectionId | string) {
   if (el) scrollToTarget(el);
 }
 
+/** True on touch-first devices (phones/tablets). */
+export const isTouchDevice = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
+/**
+ * ScrollTrigger pin settings per input type. On touch devices the scroll
+ * position is written by Lenis from JavaScript, so pinning by transform
+ * (instead of position: fixed) keeps the pinned box and the scroll write in
+ * the same frame; this removes the flicker when a pinned section releases.
+ * A short scrub and fastScrollEnd stop the scrubbed motion from trailing
+ * behind a flick and still running after the pin has ended.
+ */
+export function pinTuning(desktopScrub: number) {
+  if (scrollState.reducedMotion) return { scrub: true as const, anticipatePin: 0 };
+  return isTouchDevice()
+    ? { scrub: 0.3, anticipatePin: 0, pinType: "transform" as const, fastScrollEnd: true }
+    : { scrub: desktopScrub, anticipatePin: 1 };
+}
+
 export { gsap, ScrollTrigger };
