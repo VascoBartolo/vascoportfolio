@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, type CSSProperties, type ReactNode } from "react";
-import { gsap, scrollState } from "@/lib/scroll";
+import { gsap, isTouchDevice, scrollState } from "@/lib/scroll";
 import { cn } from "@/lib/utils";
 
 interface RevealProps {
@@ -37,14 +37,18 @@ export function Reveal({
     const el = ref.current;
     if (!el || disabled || scrollState.reducedMotion) return;
     const targets = stagger !== undefined ? Array.from(el.children) : el;
+    // Animating a blur filter is a full repaint per frame; on phones that
+    // hitches, especially when several reveals start as a pinned section
+    // releases, so touch devices reveal with motion + opacity only.
+    const blur = !isTouchDevice();
     const ctx = gsap.context(() => {
       gsap.fromTo(
         targets,
-        { y, opacity: 0, filter: "blur(8px)", scale },
+        { y, opacity: 0, filter: blur ? "blur(8px)" : "none", scale },
         {
           y: 0,
           opacity: 1,
-          filter: "blur(0px)",
+          filter: blur ? "blur(0px)" : "none",
           scale: 1,
           duration,
           delay,

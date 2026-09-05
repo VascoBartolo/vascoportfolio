@@ -256,8 +256,10 @@ export const isTouchDevice = () =>
  */
 export function pinTuning(desktopScrub: number) {
   if (scrollState.reducedMotion) return { scrub: true as const, anticipatePin: 0 };
+  // No fastScrollEnd: snapping the scrubbed motion to its end state on a
+  // fast flick reads as a jump right where the pin releases.
   return isTouchDevice()
-    ? { scrub: 0.3, anticipatePin: 0, pinType: "transform" as const, fastScrollEnd: true }
+    ? { scrub: 0.3, anticipatePin: 0, pinType: "transform" as const }
     : { scrub: desktopScrub, anticipatePin: 1 };
 }
 

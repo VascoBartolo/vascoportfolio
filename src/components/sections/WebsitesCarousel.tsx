@@ -2,6 +2,7 @@ import { memo, useLayoutEffect, useRef } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Globe } from "lucide-react";
 import { gsap, ScrollTrigger, pinTuning, scrollToTarget } from "@/lib/scroll";
 import { LiquidGlass } from "@/components/ui/LiquidGlass";
+import { GlowBorder } from "@/components/ui/GlowBorder";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/SectionHeading";
 import { SplitText } from "@/components/ui/SplitText";
@@ -89,11 +90,16 @@ export function WebsitesCarousel() {
     if (!trackEl || !pinEl) return;
     const distance = () => {
       const last = trackEl.lastElementChild as HTMLElement | null;
+      if (!last) return 0;
       // Phones: end with the last (CTA) card centred on screen.
-      if (window.innerWidth < 768 && last) {
+      if (window.innerWidth < 768) {
         return Math.max(0, last.offsetLeft + last.offsetWidth / 2 - window.innerWidth / 2);
       }
-      return Math.max(0, trackEl.scrollWidth - window.innerWidth);
+      // Desktop: last card flush with the container edge. Computed from the
+      // card itself rather than scrollWidth so decorative overflow (the CTA
+      // card's glow canvas) cannot stretch the travel.
+      const pr = parseFloat(getComputedStyle(trackEl).paddingRight) || 0;
+      return Math.max(0, last.offsetLeft + last.offsetWidth + pr - window.innerWidth);
     };
 
     const ctx = gsap.context(() => {
@@ -197,7 +203,8 @@ export function WebsitesCarousel() {
           {SITES.map((site, i) => (
             <SiteCard key={site.url} site={site} index={i} />
           ))}
-          {/* Closing CTA card */}
+          {/* Closing CTA card, framed by the pulsing accent border */}
+          <GlowBorder className="shrink-0" radius={24} spread={18}>
           <a
             href="#contact"
             className="group relative flex w-[min(82vw,440px)] shrink-0 flex-col justify-between overflow-hidden rounded-2xl glass-strong p-8 transition-[transform,border-color] duration-500 hover:-translate-y-1.5 hover:border-sky-300/30"
@@ -218,6 +225,7 @@ export function WebsitesCarousel() {
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
           </a>
+          </GlowBorder>
         </div>
 
         <div className="container mt-8">

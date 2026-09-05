@@ -7,8 +7,12 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CountUp } from "@/components/ui/CountUp";
 import { Magnetic } from "@/components/ui/Magnetic";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { GlowBorder } from "@/components/ui/GlowBorder";
 import { FLAGSHIP } from "@/lib/data";
 import { cn } from "@/lib/utils";
+
+/** Index of the results tile that gets the pulsing accent border. */
+const HIGHLIGHT = FLAGSHIP.results.findIndex((r) => r.label === "Cost savings");
 
 /**
  * Pinned three-act product story. Scrolling scrubs a GSAP timeline: each
@@ -129,14 +133,27 @@ export function Flagship() {
           <div className="absolute right-0 top-[11svh] hidden lg:block w-[min(38vw,440px)]">
             <p className="eyebrow mb-4 text-right">Measured results</p>
             <div className="grid grid-cols-2 gap-3">
-              {FLAGSHIP.results.map((r) => (
-                <SpotlightCard key={r.label} data-tile strong className="p-5">
-                  <p className="font-heading text-3xl xl:text-4xl font-semibold tracking-tight text-gradient">
-                    <CountUp value={r.value} prefix={r.prefix} suffix={r.suffix} />
-                  </p>
-                  <p className="mt-1.5 text-xs text-muted-foreground">{r.label}</p>
-                </SpotlightCard>
-              ))}
+              {FLAGSHIP.results.map((r, i) => {
+                const tile = (
+                  <SpotlightCard strong className="p-5 h-full">
+                    <p className="font-heading text-3xl xl:text-4xl font-semibold tracking-tight text-gradient">
+                      <CountUp value={r.value} prefix={r.prefix} suffix={r.suffix} />
+                    </p>
+                    <p className="mt-1.5 text-xs text-muted-foreground">{r.label}</p>
+                  </SpotlightCard>
+                );
+                // The timeline animates [data-tile]; the wrapper carries it so
+                // the glow fades in together with its tile.
+                return i === HIGHLIGHT ? (
+                  <GlowBorder key={r.label} data-tile="" radius={18} spread={14}>
+                    {tile}
+                  </GlowBorder>
+                ) : (
+                  <div key={r.label} data-tile="">
+                    {tile}
+                  </div>
+                );
+              })}
             </div>
             <div data-cta className="mt-5 flex justify-end">
               <Magnetic strength={0.25}>
@@ -192,14 +209,23 @@ export function Flagship() {
           <p className="eyebrow mb-4">Measured results</p>
         </Reveal>
         <Reveal stagger={0.08} className="grid grid-cols-2 gap-3">
-          {FLAGSHIP.results.map((r) => (
-            <SpotlightCard key={r.label} strong className="p-5">
-              <p className="font-heading text-3xl font-semibold tracking-tight text-gradient">
-                <CountUp value={r.value} prefix={r.prefix} suffix={r.suffix} />
-              </p>
-              <p className="mt-1.5 text-xs text-muted-foreground">{r.label}</p>
-            </SpotlightCard>
-          ))}
+          {FLAGSHIP.results.map((r, i) => {
+            const tile = (
+              <SpotlightCard strong className="p-5 h-full">
+                <p className="font-heading text-3xl font-semibold tracking-tight text-gradient">
+                  <CountUp value={r.value} prefix={r.prefix} suffix={r.suffix} />
+                </p>
+                <p className="mt-1.5 text-xs text-muted-foreground">{r.label}</p>
+              </SpotlightCard>
+            );
+            return i === HIGHLIGHT ? (
+              <GlowBorder key={r.label} radius={18} spread={12}>
+                {tile}
+              </GlowBorder>
+            ) : (
+              <div key={r.label}>{tile}</div>
+            );
+          })}
         </Reveal>
         <Reveal delay={0.2} className="mt-6">
           <a

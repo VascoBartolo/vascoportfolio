@@ -153,6 +153,15 @@
     @apply animate-shine;
   }
 
+  /* WebKit (iOS Safari/Chrome) does not clip composited children such as
+     blurred glow blobs to a parent's border-radius unless the parent has a
+     mask; this forces the rounded clip. */
+  .clip-rounded {
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+    transform: translateZ(0);
+  }
+
   .mask-fade-x {
     mask-image: linear-gradient(
       to right,

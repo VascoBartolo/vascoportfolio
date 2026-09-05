@@ -15,7 +15,7 @@ export function Contact() {
         <div className="grid lg:grid-cols-[0.55fr_1fr] gap-12 items-center">
           <div className="hidden lg:block min-h-[50vh]" />
           <Reveal scale={0.98}>
-            <div className="relative overflow-hidden rounded-[2rem] glass-strong p-8 md:p-14">
+            <div className="clip-rounded relative isolate overflow-hidden rounded-[2rem] glass-strong p-8 md:p-14">
               <div className="absolute -top-32 -right-24 h-80 w-80 rounded-full bg-sky-400/20 blur-[110px] pointer-events-none" />
               <div className="absolute -bottom-32 -left-24 h-72 w-72 rounded-full bg-indigo-500/20 blur-[110px] pointer-events-none" />
               <div className="relative">

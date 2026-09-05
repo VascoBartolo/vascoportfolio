@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@paper-design/shaders": "^0.0.61",
+    "@paper-design/shaders-react": "^0.0.61",
     "@splinetool/runtime": "^2.0.36",
     "clsx": "^2.1.1",
     "gsap": "^3.15.0",
