@@ -256,10 +256,13 @@ export const isTouchDevice = () =>
  */
 export function pinTuning(desktopScrub: number) {
   if (scrollState.reducedMotion) return { scrub: true as const, anticipatePin: 0 };
-  // No fastScrollEnd: snapping the scrubbed motion to its end state on a
+  // Pins stay position: fixed on every device: a transform pin is re-applied
+  // on each scroll update and, with Lenis scrolling the window natively, can
+  // land a frame behind, which makes the pinned content shake. No
+  // fastScrollEnd either: snapping the scrubbed motion to its end state on a
   // fast flick reads as a jump right where the pin releases.
   return isTouchDevice()
-    ? { scrub: 0.3, anticipatePin: 0, pinType: "transform" as const }
+    ? { scrub: 0.3, anticipatePin: 0 }
     : { scrub: desktopScrub, anticipatePin: 1 };
 }
 

@@ -75,6 +75,15 @@
   }
 }
 
+@layer components {
+  /* The container config only declares the 2xl breakpoint (so it stays
+     full-width below 1360px), which also disables its md/xl padding keys.
+     Give it responsive padding explicitly instead. */
+  .container {
+    @apply px-5 md:px-8 xl:px-12;
+  }
+}
+
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-sky-200 via-sky-400 to-indigo-400;

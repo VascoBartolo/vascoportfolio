@@ -79,7 +79,7 @@ export function Flagship() {
             container's horizontal padding on phones. From md up the negative
             margins cancel that padding, keeping the desktop layout as is. */}
         <div className="container h-full">
-        <div className="relative h-full md:-mx-8 xl:-mx-12">
+        <div className="relative h-full">
           {/* Header */}
           <div className="absolute left-0 top-[11svh] max-w-md lg:max-w-lg pr-4">
             <Reveal>
@@ -131,7 +131,10 @@ export function Flagship() {
 
           {/* Results (desktop): top-right, land in act 3 */}
           <div className="absolute right-0 top-[11svh] hidden lg:block w-[min(38vw,440px)]">
-            <p className="eyebrow mb-4 text-right">Measured results</p>
+            {/* Revealed together with the tiles (first in the stagger). */}
+            <p data-tile="" className="eyebrow mb-4 text-right">
+              Measured results
+            </p>
             <div className="grid grid-cols-2 gap-3">
               {FLAGSHIP.results.map((r, i) => {
                 const tile = (

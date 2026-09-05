@@ -8,8 +8,6 @@ import { Eyebrow } from "@/components/ui/SectionHeading";
 import { SplitText } from "@/components/ui/SplitText";
 import { SITES, screenshot, type Site } from "@/lib/data";
 
-const EDGE = "max(1.25rem, calc((100vw - 1360px) / 2 + 3rem))";
-
 const SiteCard = memo(function SiteCard({ site, index }: { site: Site; index: number }) {
   const domain = new URL(site.url).hostname.replace("www.", "");
   return (
@@ -197,8 +195,7 @@ export function WebsitesCarousel() {
           ref={track}
           // On phones the right padding centres the last (CTA) card when the
           // track reaches its end; from md up it matches the container edge.
-          className="carousel-track flex items-stretch gap-5 md:gap-6 pr-[calc((100vw-min(82vw,440px))/2)] md:pr-[max(1.25rem,calc((100vw-1360px)/2+3rem))]"
-          style={{ paddingLeft: EDGE }}
+          className="carousel-track flex items-stretch gap-5 md:gap-6 pl-5 md:pl-8 xl:pl-[max(3rem,calc((100vw-1360px)/2+3rem))] pr-[calc((100vw-min(82vw,440px))/2)] md:pr-8 xl:pr-[max(3rem,calc((100vw-1360px)/2+3rem))]"
         >
           {SITES.map((site, i) => (
             <SiteCard key={site.url} site={site} index={i} />
@@ -207,7 +204,7 @@ export function WebsitesCarousel() {
           <GlowBorder className="shrink-0" radius={24} spread={18}>
           <a
             href="#contact"
-            className="group relative flex w-[min(82vw,440px)] shrink-0 flex-col justify-between overflow-hidden rounded-2xl glass-strong p-8 transition-[transform,border-color] duration-500 hover:-translate-y-1.5 hover:border-sky-300/30"
+            className="group relative flex h-full w-[min(82vw,440px)] shrink-0 flex-col justify-between overflow-hidden rounded-2xl glass-strong p-8 transition-[transform,border-color] duration-500 hover:-translate-y-1.5 hover:border-sky-300/30"
           >
             <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-sky-400/20 blur-[90px] pointer-events-none" />
             <p className="eyebrow">Next project</p>
